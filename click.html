@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>click</title>
+	<style>
+		*{margin:0;padding:0;}
+		.box{border:1px solid red;float:left;margin-right:5px;height: 300px;width:300px}
+		.box li {border:1px solid green;margin:5px auto;height:50px;overflow:hidden;width:100px;}
+		.box li img {cursor:pointer;width:100%;width: initial}
+
+
+/*遮罩预览图片 begin*/
+
+.rebox { cursor: pointer; position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1000; -webkit-filter: none !important;
+    background: rgb(0, 0, 0); /* IE Fallback (Solid Colour) */
+    background: rgba(0, 0, 0, 0.7); }
+.rebox *{ -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; padding: 0; margin: 0; }
+.rebox-contents { position: absolute; top: 5%; left: 5%; text-align: center; width: 90%; height: 90%; }
+.rebox-contents .rebox-content { border: 5px solid #fff; box-shadow: 0 0 20px #000; border-radius: 1px; max-width: 100%; max-height: 100%; }
+.rebox-loading { width: 31px; height: 31px; margin: -16px 0 0 -16px; position: absolute; top: 48%; left: 50%; }
+.rebox-caption { display: none; position: absolute; left: 0; bottom: 0; width: 100%; text-align: center; z-index: 1000; background: #000; background: rgba(0,0,0,0.7); }
+.rebox-caption p { margin: 0 auto; max-width: 70%; display: inline-block; *display: inline; *zoom: 1; padding: 10px; color: #fff; font-size: 12px; line-height: 18px; }
+
+.rebox-button { position: absolute; z-index: 9999; min-width: 40px; height: 40px; line-height: 40px; background: rgb(0, 0, 0); opacity:0.4; 
+    text-decoration: none; font-size: 24px; color: #fff; text-align: center; vertical-align: middle;
+    -webkit-border-radius: 32px; -moz-border-radius: 32px; -ms-border-radius: 32px; border-radius: 32px;
+    -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; transition: all 0.3s; }
+.rebox-button:hover,
+.rebox-button:focus { opacity: 1; -webkit-transform: scale(1.4); -moz-transform: scale(1.4); -ms-transform: scale(1.4); transform: scale(1.4); }
+.rebox-close { right: 10px; top: 10px; }
+.rebox-next { right: 10px; top: 48%; }
+.rebox-prev { left: 10px; top: 48%; }
+.rebox-loading { left: 50%; top: 48%;
+    -webkit-animation-name: spin; -webkit-animation-duration: 2000ms; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin; -moz-animation-duration: 2000ms; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: linear;
+    -ms-animation-name: spin; -ms-animation-duration: 2000ms; -ms-animation-iteration-count: infinite; -ms-animation-timing-function: linear;    
+    animation-name: spin; animation-duration: 2000ms; animation-iteration-count: infinite; animation-timing-function: linear;
+}
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+	<ul class="box">
+		<li>
+			<img src="https://img.mxtrip.cn/8f86f5fee3f3c14a407539926eb76739@100Q_580w_236h_1pr_1c_1e" />
+		</li>
+		<li>
+			<img src="http://wx4.sinaimg.cn/mw690/87d34b97gy1fjvy9kcxp7j21hc1z4x6s.jpg" />
+		</li>
+		<li>
+			<img src="https://img.mxtrip.cn/872c98c4db876f5b49e83246e3dd1cf0@100Q_580w_386h_1pr_1c_1e" />
+		</li>
+	</ul>
+
+	<!-- showImageBox begin -->
+
+    <div class="rebox" style="z-index: 1000;display: none">
+        <a class="rebox-close rebox-button">×</a>
+        <a class="rebox-prev rebox-button">←</a>
+        <a class="rebox-next rebox-button">→</a>
+        <div class="rebox-contents"></div>
+    </div>
+	<!-- showImageBox begin -->
+	<script type="text/javascript">
+
+
+		var key = true,$eventImg = null,number=0,_showImgBox = function() {
+
+		var $rebox = $('.rebox'),
+			$reboxCon = $('.rebox-contents'),
+			$reboxPrev = $('.rebox-prev'),
+			$reboxNext = $('.rebox-next'),
+			$reboxClose = $('.rebox-close'),
+			$resCon = $('.box'),
+
+			imgBox = {
+				
+				prev: function(obj) {
+
+					var isPrevNode = obj.parentElement.previousElementSibling;
+					if (isPrevNode) {
+
+						$eventImg = isPrevNode.children[0];
+						imgBox.open($eventImg);
+
+					} else {
+
+						$eventImg = obj.parentElement.parentElement.lastElementChild.children[0];
+						imgBox.open($eventImg);
+					}
+					// key = false;
+					// setTimeout(function(){
+					// 	key = true;
+					// },300);
+				},
+				next: function(obj) {
+					var isNextNode = obj.parentElement.nextElementSibling;
+					if (isNextNode) {
+
+						$eventImg = isNextNode.children[0];
+						imgBox.open($eventImg);
+
+					} else {
+
+						$eventImg = obj.parentElement.parentElement.firstElementChild.children[0];
+						imgBox.open($eventImg);
+					}
+					// key = false;
+					// setTimeout(function(){
+					// 	key = true;
+					// },300);
+				},
+				open: function(obj) {
+					//debugger;
+					newUrl = obj.src;
+
+					$reboxCon.css('background', 'url(' + newUrl + ') no-repeat center center ');
+
+					$rebox.show();
+
+				},
+				close: function() {
+
+					$rebox.hide();
+				}
+
+			};
+		//绑定前先移除之前绑定的事件
+		$resCon.off('click').on('click',function(evt){
+			$eventImg = evt.target;
+			imgBox.open($eventImg)
+		});
+
+		console.log($resCon.length);
+
+		if(!number){
+
+			$rebox.on('click','.rebox-prev',function(evt) {
+
+				imgBox.prev($eventImg,key);
+
+			});
+
+			$rebox.on('click','.rebox-next',function(evt) {
+
+				imgBox.next($eventImg,key);
+
+			});
+
+			$reboxClose.on('click',function() {
+				imgBox.close();
+			});
+
+			number += 1;
+			debugger;
+
+		}
+			
+			console.log('all images loaded and executeShowImgBox');
+
+	};
+	_showImgBox();
+
+	//模拟动态加载dom后，再次绑定事件
+	//这种情况会导致 事件累加绑定到元素上，单击一次会触发多次单击事件
+	var againEvents = setInterval(_showImgBox,10000);
+	setTimeout(function(){
+		clearInterval(againEvents);
+	},30000)
+	</script>
+</body>
+</html>
